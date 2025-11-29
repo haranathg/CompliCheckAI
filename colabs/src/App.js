@@ -14,11 +14,16 @@ function App() {
     }
   }, []);
 
+  const handleLogout = () => {
+    sessionStorage.removeItem('complicheck_authenticated');
+    setIsAuthenticated(false);
+  };
+
   if (!isAuthenticated) {
     return <LoginPage onAuthenticated={() => setIsAuthenticated(true)} />;
   }
 
-  return <CompliCheckAI />;
+  return <CompliCheckAI onLogout={handleLogout} />;
 }
 
 export default App;

@@ -25,7 +25,7 @@ const colors = {
 };
 
 // ===== HEADER COMPONENT =====
-const Header = ({ currentStep, userName = "Sarah Mitchell" }) => (
+const Header = ({ currentStep, userName = "Sarah Mitchell", onLogout }) => (
   <header className="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white shadow-xl sticky top-0 z-50">
     <div className="max-w-7xl mx-auto">
       {/* Top bar */}
@@ -71,6 +71,19 @@ const Header = ({ currentStep, userName = "Sarah Mitchell" }) => (
               <p className="text-xs text-slate-400">Architect</p>
             </div>
           </div>
+          {onLogout && (
+            <>
+              <div className="h-6 w-px bg-slate-700"></div>
+              <button
+                onClick={onLogout}
+                className="flex items-center gap-2 px-3 py-2 text-slate-400 hover:text-white hover:bg-slate-700/50 rounded-lg transition-colors"
+                title="Sign out"
+              >
+                <LogOut className="w-4 h-4" />
+                <span className="hidden md:inline text-sm">Sign out</span>
+              </button>
+            </>
+          )}
         </div>
       </div>
       
@@ -1722,7 +1735,7 @@ const Step10SubmitToCouncil = ({ data, onBack }) => {
 };
 
 // ===== MAIN APP =====
-export default function CompliCheckAI() {
+export default function CompliCheckAI({ onLogout }) {
   const [currentStep, setCurrentStep] = useState(1);
   const [data, setData] = useState({});
 
@@ -1768,7 +1781,7 @@ export default function CompliCheckAI() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-100 via-slate-50 to-white flex flex-col" style={{ fontFamily: "'Inter', system-ui, sans-serif" }}>
-      <Header currentStep={currentStep} />
+      <Header currentStep={currentStep} onLogout={onLogout} />
       
       <main className="flex-1 max-w-5xl mx-auto w-full px-6 py-8">
         <ProgressStepper currentStep={currentStep} steps={steps} />
