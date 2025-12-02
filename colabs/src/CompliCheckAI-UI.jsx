@@ -42,7 +42,7 @@ const Header = ({ currentStep, userName = "Sarah Mitchell", onLogout }) => (
               </div>
             </div>
             <div>
-              <h1 className="text-xl font-bold tracking-tight">CompliCheck<span className="text-emerald-400">AI</span></h1>
+              <h1 className="text-xl font-bold tracking-tight">CompliCheck<span className="text-emerald-400">AI</span> <span className="text-slate-400 font-normal">: CoLabs Mock Flow</span></h1>
               <div className="flex items-center gap-1.5 text-xs text-slate-400">
                 <span>powered by</span>
                 <Compass className="w-3 h-3 text-amber-400" />
